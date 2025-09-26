@@ -54,7 +54,7 @@ exports.deleteService = async (req,res)=> {
     }
 };
 
-/*
+
 //controlador para leer servicio por ID
 exports.serviceById = async (req,res)=> {
     try {
@@ -66,4 +66,3 @@ exports.serviceById = async (req,res)=> {
         return res.status(500).json({ message: 'Error al obtener el servicios', error: error.message });
     }
 };
-*/
