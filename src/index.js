@@ -28,6 +28,8 @@ app.use(express.json());
 const auth = require('./middleware/authorization');
 
 
+
+
 // Aqui se crean los endpoints de usuarios y servicios
 app.use('/api/v1/users', userRouter); //localhost:3000/api/v1/users
 app.use('/api/v1/services', serviceRouter);//localhost:3000/api/v1/services
