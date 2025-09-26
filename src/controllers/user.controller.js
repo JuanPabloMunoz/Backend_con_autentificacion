@@ -68,3 +68,18 @@ exports.login= async (req,res)=> {
     }
 };
 
+
+//controlador paraobtener los datos de un usuario por ID
+exports.modifyUserById = async (req,res)=> {
+    try {
+        const {name, mail, description, password} = req.body;
+        const modifyUserById = await User.findByIdAndUpdate(
+            req.params.id,
+            {name, mail, description, password},
+        {new:true, runValidators:true});
+        if (!modifyUserById) return res.status(404).json({ message: 'No se pudo encontrar la ID del usuario' });
+        return res.status(200).json({ usuario: modifyUserById });
+    } catch (error) {
+        return res.status(500).json({ message: 'Error al obtener al usuario', error: error.message });
+    }
+};
