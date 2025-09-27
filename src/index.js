@@ -18,7 +18,7 @@ connectDB();
 const userRouter = require('./routes/users.routes.js'); 
 const serviceRouter = require('./routes/services.routes.js'); 
 
-//const whitelist = ['http://localhost:3000', 'https://myapp.com']; // Lista de dominios permitidos
+//const whitelist = ['https://render.com', 'https://github.com/']; // Lista de dominios permitidos
 //app.use(cors());
 
 // Middleware para parsear JSON
