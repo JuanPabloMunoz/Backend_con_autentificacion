@@ -14,8 +14,8 @@ exports.allServices = async (req,res)=> {
 
 //controlador para crear un nuevo servicio
 exports.createService = async (req,res)=> {
+    const {name, price, description} = req.body;
     try {
-        const {name, price, description} = req.body;
         const newService = await Service.create({name, price, description});
         if (!newService) return res.status(404).json({ error: 'No se pudo crear el servicio' });
         return res.status(200).json({ datos: newService });
@@ -27,11 +27,11 @@ exports.createService = async (req,res)=> {
 
 //controlador para modificar un servicio
 exports.updateService = async (req,res)=> {
+    const {name, price, description} = req.body;
    try {
-        const {name, price, description} = req.body;
         const updateService = await Service.findByIdAndUpdate(
-            req.params.id,
-            {name, price, description},
+        req.params.id,
+        {name, price, description},
         {new:true, runValidators:true});
         if (!updateService) return res.status(404).json({ message: 'No se pudo encontrar la ID del usuario' });
         return res.status(200).json({ servicioActualizado: updateService });
@@ -57,8 +57,8 @@ exports.deleteService = async (req,res)=> {
 
 //controlador para leer servicio por ID
 exports.serviceById = async (req,res)=> {
+    const {name, price, description} = req.body;
     try {
-        const {name, price, description} = req.body;
         const serviceById = await Service.findById(req.params.id);
         if (!serviceById) return res.status(404).json({ message: 'No se pudo encontrar la ID del servicio' });
         return res.status(200).json({ servicio: serviceById });
