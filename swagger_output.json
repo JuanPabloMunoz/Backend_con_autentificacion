@@ -1,11 +1,11 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.0",
   "info": {
-    "title": "API de usuarios y Servicios",
-    "description": "API para gestionar usuarios y servicios, usando metodos crud, con autenticacion JWT y encriptacion de contraseñas con bcryptjs y base de datos MongoDB",
-    "version": "1.0.0"
+  "title": "API de usuarios y Servicios",
+  "description": "API para gestionar usuarios y servicios, usando metodos crud, con autenticacion JWT y encriptacion de contraseñas con bcryptjs y base de datos MongoDB",
+  "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "https://backend-autentificacion.onrender.com",
   "basePath": "/",
   "schemes": [
     "http"
@@ -150,47 +150,133 @@
     },
     "/api/v1/services/": {
       "get": {
-        "description": "obtiene todos los servicios",
+        "description": "obtiene todos los servicios.",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "No se pudo obtener los servicios"
           }
         }
       },
+      "/api/v1/services/": {
       "post": {
-        "description": "Crea un nuevo servicio",
+        "description": "Crea un nuevo servicio.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any-name-service"
+                },
+                "price": {
+                  "example": "any-price-$$$$"
+                },
+                "description": {
+                  "example": "any-description-blablabla"
+                 }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK."
+          },
+          "404": {
+            "description": "Not Found."
+          },
+          "500": {
+            "description": "No se pudo crear el servicio."
           }
         }
       }
     },
     "/api/v1/services/{id}": {
       "put": {
-        "description": "Modifica un servicio por ID",
-        "responses": {
-          "default": {
-            "description": ""
+        "description": "Modifica un servicio por ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any-name-service"
+                },
+                "price": {
+                  "example": "any-price-$$$$$"
+                },
+                "description": {
+                  "example": "any-description-blablabla"
+                }
+              }
+            }
+          }
+        ],
+          "responses": {
+          "200": {
+            "description": "OK."
+          },
+          "404": {
+            "description": "Not Found."
+          },
+          "500": {
+            "description": "No se pudo modificar el servicio."
           }
         }
       },
       "delete": {
-        "description": "Elimina un servicio por ID",
-        "responses": {
-          "default": {
-            "description": ""
+        "description": "Elimina un servicio por ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK."
+          },
+          "404": {
+            "description": "Not Found."
+          },
+          "500": {
+            "description": "No se pudo encontrar la id del servicio a eliminar."
         }
       },
       "get": {
         "description": "Obtiene un servicio por ID",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK."
+          },
+          "404": {
+            "description": "Not Found."
+          },
+          "500": {
+            "description": "No se encontro la id del servicio."
           }
         }
       }
     }
   }
+}
+}
 }

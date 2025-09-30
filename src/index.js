@@ -1,5 +1,10 @@
 require ('dotenv').config();
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocUi = require('../swagger_output.json');
+
+
+
 const express = require('express');
 const bcryptjs = require('bcryptjs');
 const cors = require('cors');
@@ -26,11 +31,13 @@ const serviceRouter = require('./routes/services.routes.js');
 // Middleware para parsear JSON
 app.use(express.json());
 
+
 //importa middleware de autorizacion
 const auth = require('./middleware/authorization');
 
 
-
+//importa la documentacion de swagger UI
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocUi));//**********
 
 // Aqui se crean los endpoints de usuarios y servicios
 app.use('/api/v1/users', userRouter); //localhost:3000/api/v1/users
