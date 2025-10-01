@@ -1,5 +1,5 @@
 {
-  "openapi": "5.0.1",
+  "openapi": "3.0.0",
   "info": {
     "title": "API de usuarios y Servicios",
     "description": "API para gestionar usuarios y servicios, usando metodos crud, con autenticacion JWT y encriptacion de contraseñas con bcryptjs y base de datos MongoDB",
