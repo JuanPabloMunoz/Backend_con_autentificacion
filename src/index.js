@@ -37,7 +37,7 @@ const auth = require('./middleware/authorization');
 
 
 //importa la documentacion de swagger UI
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocUi));//**********
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocUi));//localhost:3000/api-docs
 
 // Aqui se crean los endpoints de usuarios y servicios
 app.use('/api/v1/users', userRouter); //localhost:3000/api/v1/users
