@@ -25,8 +25,8 @@ connectDB();
 const userRouter = require('./routes/users.routes.js'); 
 const serviceRouter = require('./routes/services.routes.js'); 
 
-//const whitelist = ['https://render.com', 'https://github.com/']; // Lista de dominios permitidos
-//app.use(cors());
+const whitelist = ['https://backend-autentificacion.onrender.com', 'https://github.com/JuanPabloMunoz/Backend_con_autentificacion.git']; // Lista de dominios permitidos
+app.use(cors(whitelist));
 
 // Middleware para parsear JSON
 app.use(express.json());
