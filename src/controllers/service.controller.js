@@ -17,8 +17,8 @@ exports.createService = async (req,res)=> {
     const {name, price, description} = req.body;
     try {
         const newService = await Service.create({name, price, description});
-        if (!newService) return res.status(404).json({ error: 'No se pudo crear el servicio' });
-        return res.status(200).json({ datos: newService });
+        if (!newService) return res.status(400).json({ error: 'No se pudo crear el servicio' });
+        return res.status(201).json({ datos: newService });
     } catch (error) {
         return res.status(500).json({ message: 'Error al obtener los servicios', error: error.message });
     }
@@ -33,7 +33,7 @@ exports.updateService = async (req,res)=> {
         req.params.id,
         {name, price, description},
         {new:true, runValidators:true});
-        if (!updateService) return res.status(404).json({ message: 'No se pudo encontrar la ID del usuario' });
+        if (!updateService) return res.status(400).json({ message: 'No se pudo encontrar la ID del usuario' });
         return res.status(200).json({ servicioActualizado: updateService });
     } catch (error) {
         return res.status(500).json({ message: 'Error al obtener al usuario', error: error.message });

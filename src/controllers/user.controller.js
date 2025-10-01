@@ -26,9 +26,9 @@ exports.login= async (req,res)=> {
     const {mail, password} = req.body;
      try{
         let foundUser = await User.findOne({ mail});
-        if(!foundUser) return res.status(400).json({error: 'No se encontro el usuario'});
+        if(!foundUser) return res.status(404).json({error: 'No se encontro el usuario'});
         const passwordSuccess = await bcryptjs.compare(password, foundUser.password);
-        if(!passwordSuccess) return res.status(400).json({error: 'El mail, o la contraseña es incorrecta'});
+        if(!passwordSuccess) return res.status(404).json({error: 'El mail, o la contraseña es incorrecta'});
     
         const payload = {
             user:{ 
@@ -77,7 +77,7 @@ exports.modifyUserById = async (req,res)=> {
             req.params.id,
             {name, mail, description, password},
         {new:true, runValidators:true});
-        if (!modifyUserById) return res.status(404).json({ message: 'No se pudo encontrar la ID del usuario' });
+        if (!modifyUserById) return res.status(400).json({ message: 'No se pudo encontrar la ID del usuario' });
         return res.status(200).json({ usuario: modifyUserById });
     } catch (error) {
         return res.status(500).json({ message: 'Error al obtener al usuario', error: error.message });

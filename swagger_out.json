@@ -5,7 +5,7 @@
     "description": "API para gestionar usuarios y servicios, usando metodos crud, con autenticacion JWT y encriptacion de contraseñas con bcryptjs y base de datos MongoDB",
     "version": "1.0.0"
   },
-  "host": "https://backend-autentificacion.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
     "http"
@@ -13,7 +13,7 @@
   "paths": {
     "/api/v1/users/sigin": {
       "post": {
-        "description": "",
+        "description": "Permite craer un usuario",
         "parameters": [
           {
             "name": "body",
@@ -22,16 +22,16 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "example": "Maria Peña"
                 },
                 "mail": {
-                  "example": "any"
+                  "example": "mpena@gmail.com"
                 },
                 "description": {
-                  "example": "any"
+                  "example": "Alumna de Piano"
                 },
                 "password": {
-                  "example": "any"
+                  "example": "Ingresar password de 6 caracteres"
                 }
               }
             }
@@ -39,10 +39,10 @@
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Usuario creado!!"
           },
           "400": {
-            "description": "Bad Request"
+            "description": "No se pudo crear usuario!!"
           },
           "500": {
             "description": "Internal Server Error"
@@ -61,10 +61,10 @@
               "type": "object",
               "properties": {
                 "mail": {
-                  "example": "any"
+                  "example": "amunoz@gmail.com"
                 },
                 "password": {
-                  "example": "any"
+                  "example": "Ingresar paswor de 6 caracteres"
                 }
               }
             }
@@ -72,17 +72,17 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Login exitoso!!"
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Mail o contraseña incorrecta"
           }
         }
       }
     },
     "/api/v1/users/loginVerification": {
       "get": {
-        "description": "",
+        "description": "Verifica el logeo del usuario, se debe ingresar el Token.",
         "parameters": [
           {
             "name": "authorization",
@@ -95,7 +95,7 @@
             "description": "OK"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Usuario no autorizado!!"
           },
           "500": {
             "description": "Internal Server Error"
@@ -105,7 +105,7 @@
     },
     "/api/v1/users/{id}": {
       "put": {
-        "description": "",
+        "description": "Modifica usuario por ID.",
         "parameters": [
           {
             "name": "id",
@@ -120,16 +120,16 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "example": "Juan Pablo"
                 },
                 "mail": {
-                  "example": "any"
+                  "example": "juanpablo@hotmail.com"
                 },
                 "description": {
-                  "example": "any"
+                  "example": "Alumno de Guitarra"
                 },
                 "password": {
-                  "example": "any"
+                  "example": "Ingresar contraseña de 6 caracteres"
                 }
               }
             }
@@ -137,29 +137,70 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Usuario modificado!!"
           },
-          "404": {
-            "description": "Not Found"
+          "400":{
+            "description": "No se pudo modificar el usuario!!"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error!!"
           }
         }
       }
     },
     "/api/v1/services/": {
       "get": {
-        "description": "",
+        "description": "Obtiene todos los servicios creados en la base de datos.",
         "responses": {
+          "200":{
+            "description": "ok."
+          },
+          "404":{
+            "description": "No hay servicios en la base de datos!!"
+          },
+          "500":{
+            "description": "Internal Server Error!!"
+          },
           "default": {
             "description": ""
           }
         }
       },
       "post": {
-        "description": "",
+        "description": "Crea un nuevo servicio en la base de datos.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema":{
+              "type": "object",
+              "properties": {
+                "name":{
+                  "example": "Clases de bajo"
+                },
+                "price":{
+                  "example": 10000
+                },
+                "description": {
+                  "example": "este servicio consiste en..."
+                }
+
+              }
+
+            }
+          
+          }
+        ],
         "responses": {
+          "201":{
+            "description": "Servicio Creado!!"
+          },
+          "400":{
+            "description": "No se pudo crear el servicio!!"
+          },
+          "500":{
+            "description": "Internal Server Error"
+          },
           "default": {
             "description": ""
           }
@@ -168,27 +209,89 @@
     },
     "/api/v1/services/{id}": {
       "put": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
+        "description": "Modifica un servicio por ID.",
+        "parameters":[
+         {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "Curso de Bajo Electrico"
+                },
+                "price": {
+                  "example": 10000
+                },
+                "description": {
+                  "example": "El curso de bajo electrico consiste en..."
+                }
+              }
+            }
           }
-        }
-      },
+        ],
+        "responses": {
+          "200": {
+            "description": "Servicio modificado!!"
+          },
+          "400": {
+            "description": "No se pudo modificar el servicio!!"
+          },
+          "500": {
+            "description": "Internal Server Error!!"
+          }
+          }
+        },
       "delete": {
-        "description": "",
+        "description": "Permite eliminar un servicio por ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          } 
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "El servicio ha sido eliminado!!"
+          },
+          "404": {
+            "description": "No se encuentra el ID del servicio a eliminar"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
+          
         }
       },
       "get": {
-        "description": "",
+        "description": "Permite obtener un servicio por ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }         
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "No se encontro el Id del servicio"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
+          
         }
       }
     }
