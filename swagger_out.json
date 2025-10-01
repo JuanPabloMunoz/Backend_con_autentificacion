@@ -1,9 +1,9 @@
 {
-  "openapi": "3.0.0",
+  "swagger": "2.0",
   "info": {
-  "title": "API de usuarios y Servicios",
-  "description": "API para gestionar usuarios y servicios, usando metodos crud, con autenticacion JWT y encriptacion de contraseñas con bcryptjs y base de datos MongoDB",
-  "version": "1.0.0"
+    "title": "API de usuarios y Servicios",
+    "description": "API para gestionar usuarios y servicios, usando metodos crud, con autenticacion JWT y encriptacion de contraseñas con bcryptjs y base de datos MongoDB",
+    "version": "1.0.0"
   },
   "host": "localhost:3000",
   "basePath": "/",
@@ -13,7 +13,7 @@
   "paths": {
     "/api/v1/users/sigin": {
       "post": {
-        "description": "Crea un nuevo usuario",
+        "description": "",
         "parameters": [
           {
             "name": "body",
@@ -22,16 +22,16 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any-name"
+                  "example": "any"
                 },
                 "mail": {
-                  "example": "any@gmail.com"
+                  "example": "any"
                 },
                 "description": {
                   "example": "any"
                 },
                 "password": {
-                  "example": "any123"
+                  "example": "any"
                 }
               }
             }
@@ -52,7 +52,7 @@
     },
     "/api/v1/users/login": {
       "post": {
-        "description": "logea un usuario",
+        "description": "",
         "parameters": [
           {
             "name": "body",
@@ -61,10 +61,10 @@
               "type": "object",
               "properties": {
                 "mail": {
-                  "example": "any@gmail.com"
+                  "example": "any"
                 },
                 "password": {
-                  "example": "any123"
+                  "example": "any"
                 }
               }
             }
@@ -82,7 +82,7 @@
     },
     "/api/v1/users/loginVerification": {
       "get": {
-        "description": "Verifica el token JWT",
+        "description": "",
         "parameters": [
           {
             "name": "authorization",
@@ -105,7 +105,7 @@
     },
     "/api/v1/users/{id}": {
       "put": {
-        "description": "Modifica un usuario por ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -120,16 +120,16 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any-name"
+                  "example": "any"
                 },
                 "mail": {
-                  "example": "any@gmail.com"
+                  "example": "any"
                 },
                 "description": {
                   "example": "any"
                 },
                 "password": {
-                  "example": "any123"
+                  "example": "any"
                 }
               }
             }
@@ -150,16 +150,18 @@
     },
     "/api/v1/services/": {
       "get": {
-        "description": "obtiene todos los servicios.",
+        "description": "",
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "No se pudo obtener los servicios"
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
           }
         }
       }
@@ -172,19 +174,23 @@
             "description": ""
           }
         }
+      },
+      "delete": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       }
     }
-
-
-    
   }
 }
-      
-  
-        
-
-
-   
-
-  
-      
