@@ -57,7 +57,7 @@ exports.deleteService = async (req,res)=> {
 
 //controlador para leer servicio por ID
 exports.serviceById = async (req,res)=> {
-    const {name, price, description} = req.body;
+    //const {name, price, description} = req.body;//**** */
     try {
         const serviceById = await Service.findById(req.params.id);
         if (!serviceById) return res.status(404).json({ message: 'No se pudo encontrar la ID del servicio' });
