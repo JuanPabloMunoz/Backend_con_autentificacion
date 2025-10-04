@@ -7,6 +7,8 @@ de sitios que pueden acceder a nuestra Api. Para finalizar se crea documentació
 de Forma adicional se intenta incorporar swagger Autogen (genera archivo "json" de forma automatica)  y swagger UI 
 (para desplegar documentación grafica) todo lo correpondiente a swagger se terminara en un futuro cercano.
 
+<img width="1891" height="973" alt="Image" src="https://github.com/user-attachments/assets/ba8fc116-3eef-402a-bacd-967b5496d078" />
+
 - Para visualizar la documentacioó de la colección Services, ir a  https://documenter.getpostman.com/view/41936642/2sB3QGtrVq
  ![Image](https://github.com/user-attachments/assets/f4c8a3d2-cea9-464a-ad67-6944531088e9)
 - Para visualizar la documentación de la colección Users, ir a https://documenter.getpostman.com/view/41936642/2sB3QGtrVu
