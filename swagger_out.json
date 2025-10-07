@@ -8,7 +8,7 @@
   "host": "https://backend-autentificacion.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/api/v1/users/sigin": {
